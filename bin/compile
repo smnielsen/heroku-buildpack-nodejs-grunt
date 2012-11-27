@@ -170,7 +170,7 @@ export CPPPATH="$INCLUDE_PATH"
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
 run_npm "install --production"
-run_npm "install -g git://github.com/apiaryio/grunt.git#production"
+run_npm "install git://github.com/apiaryio/grunt.git#production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
@@ -180,7 +180,7 @@ echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   echo "-----> Found gruntfile, running grunt heroku task"
-  grunt heroku
+  $BUILD_DIR/node_modules/grunt/bin/grunt heroku
 els/e
   echo "-----> No gruntfile (grunt.js) found"
 fi
