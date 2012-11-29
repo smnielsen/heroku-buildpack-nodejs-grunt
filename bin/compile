@@ -169,6 +169,7 @@ export CPPPATH="$INCLUDE_PATH"
 
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
+ls -lah
 run_npm "install --production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
