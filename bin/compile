@@ -183,6 +183,8 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   echo "-----> Found gruntfile, running grunt heroku task"
   pwd
   ls -lah
+  echo '--'
+  ls -lah $BUILD_DIR
   $BUILD_DIR/node_modules/grunt/bin/grunt heroku
 else
   echo "-----> No gruntfile (grunt.js) found"
