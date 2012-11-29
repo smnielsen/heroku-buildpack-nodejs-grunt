@@ -7,7 +7,8 @@ set -e
 # debug
 # set -x
 
-export APPLICATION_GIT_DIR=$GIT_DIR
+export APPLICATION_GIT_DIR=`pwd`
+
 # clean up leaking environment
 unset GIT_DIR
 
