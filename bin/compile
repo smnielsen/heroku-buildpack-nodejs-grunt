@@ -7,6 +7,8 @@ set -e
 # debug
 # set -x
 
+# preserve git directory, which is in /app/repo.git
+# GIT_DIR is '.', otherwise it would be good to join'em
 export APPLICATION_GIT_DIR=`pwd`
 
 # clean up leaking environment
@@ -171,8 +173,6 @@ export CPPPATH="$INCLUDE_PATH"
 
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
-pwd
-ls -lah
 run_npm "install --production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
@@ -183,10 +183,6 @@ echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.
 
 if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
   echo "-----> Found gruntfile, running grunt heroku task"
-  pwd
-  ls -lah $CACHE_DIR
-  echo '--'
-  ls -lah $BUILD_DIR
   $BUILD_DIR/node_modules/grunt/bin/grunt heroku
 else
   echo "-----> No gruntfile (grunt.js) found"
