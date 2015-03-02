@@ -6,7 +6,13 @@
     "type" : "git",
     "url" : "http://github.com/example/example.git"
   },
+  "dependencies": {
+    "hashish": "*"
+  },
   "engines": {
-    "node": ">0.11.0"
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "postinstall": "echo 'web: node index.js customArg' > Procfile"
   }
 }
