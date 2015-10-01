@@ -183,8 +183,6 @@ function build_dependencies() {
       npm --unsafe-perm prune 2>&1 | indent
       info "Installing any new modules"
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
-      info "Pruning possible devDependencies installed in previous step"
-      npm --unsafe-perm --prod prune 2>&1 | indent
     else
       info "$cache_status"
       info "Installing node modules"
