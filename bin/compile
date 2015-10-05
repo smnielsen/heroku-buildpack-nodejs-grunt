@@ -54,6 +54,7 @@ if [ "$iojs_engine" == "" ]; then
 else
   install_iojs "$iojs_engine"
 fi
+clean_cache
 install_npm
 
 ####### Install SSH-Private keys
