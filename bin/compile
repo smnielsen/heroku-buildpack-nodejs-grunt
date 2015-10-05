@@ -56,6 +56,12 @@ else
 fi
 install_npm
 
+####### Install SSH-Private keys
+
+head "Setting up ssh"
+cd $build_dir
+setup_ssh
+
 ####### Build the project's dependencies
 
 head "Building dependencies"

@@ -104,6 +104,24 @@ show_current_state() {
   info "NODE_MODULES_CACHE=$NODE_MODULES_CACHE"
 }
 
+setup_ssh() {
+  # Install private ssh key
+  ssh_dir=~/.ssh
+
+  mkdir -p $ssh_dir/
+  chmod 700 $ssh_dir/
+
+  cp $env_dir/SSH_KEY $ssh_dir/id_rsa
+  chmod 400 $ssh_dir/id_rsa
+
+  echo 'Host *' > $ssh_dir/config
+  echo '  StrictHostKeyChecking=no' >> $ssh_dir/config
+  chmod 600 $ssh_dir/config
+
+  mkdir -p "$build_dir/.profile.d"
+  echo "unset -v ssh_key" > $build_dir/.profile.d/unset-ssh-key.sh
+}
+
 install_node() {
   local node_engine=$1
 
