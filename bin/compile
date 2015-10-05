@@ -33,6 +33,10 @@ unset GIT_DIR
 # Provide hook to deal with errors
 trap build_failed ERR
 
+# Clean cache temporarily
+head "Cleaning cache for pure build"
+clean_cache
+
 ####### Determine current state
 
 head "Reading application state"
@@ -54,7 +58,6 @@ if [ "$iojs_engine" == "" ]; then
 else
   install_iojs "$iojs_engine"
 fi
-clean_cache
 install_npm
 
 ####### Install SSH-Private keys
