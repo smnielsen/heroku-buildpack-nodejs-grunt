@@ -204,6 +204,7 @@ function build_dependencies() {
     else
       info "$cache_status"
       info "Installing node modules"
+      npm cache clean
       touch $build_dir/.npmrc
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
     fi
@@ -260,13 +261,6 @@ create_cache() {
   if test -d $build_dir/node_modules; then
     cp -r $build_dir/node_modules $cache_dir/node
   fi
-}
-
-pure_npm() {
-  info "Cleaning previous cache"
-  rm -rf "$cache_dir/node_modules" # (for apps still on the older caching strategy)
-  rm -rf "$cache_dir/node"
-  npm cache clean
 }
 
 clean_cache() {
