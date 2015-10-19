@@ -262,6 +262,13 @@ create_cache() {
   fi
 }
 
+pure_npm() {
+  info "Cleaning previous cache"
+  rm -rf "$cache_dir/node_modules" # (for apps still on the older caching strategy)
+  rm -rf "$cache_dir/node"
+  npm cache clean
+}
+
 clean_cache() {
   info "Cleaning previous cache"
   rm -rf "$cache_dir/node_modules" # (for apps still on the older caching strategy)

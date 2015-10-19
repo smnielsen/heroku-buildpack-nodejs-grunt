@@ -35,7 +35,7 @@ trap build_failed ERR
 
 # Clean cache temporarily
 head "Cleaning cache for pure build"
-clean_cache
+pure_npm
 
 ####### Determine current state
 
