@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 run_grunt() {
   if [ -f $build_dir/grunt.js ] || [ -f $build_dir/gruntfile.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
     echo "-----> Found Gruntfile, running grunt heroku task"
