@@ -34,15 +34,15 @@ unset GIT_DIR
 trap build_failed ERR
 
 # Clean cache temporarily
-#head "Cleaning cache for pure build"
-#clean_cache
-#clean_npm
+head "Cleaning cache for pure build"
+clean_cache
+clean_npm
 
 ####### Determine current state
 
-#head "Reading application state"
-#read_current_state
-#show_current_state
+head "Reading application state"
+read_current_state
+show_current_state
 
 if [ "$iojs_engine" == "" ]; then
   warn_node_engine "$node_engine"
