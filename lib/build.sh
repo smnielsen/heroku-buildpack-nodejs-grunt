@@ -194,6 +194,8 @@ function build_dependencies() {
   else
     cache_status=$(get_cache_status)
 
+    info "Cache status is $cache_status"
+
     if [ "$cache_status" == "valid" ]; then
       info "Restoring node modules from cache"
       cp -r $cache_dir/node/node_modules $build_dir/
@@ -202,9 +204,10 @@ function build_dependencies() {
       info "Installing any new modules"
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
     else
-      info "Cache status is $cache_status"
-      info "Installing node modules"
+      info "Removing node_modules for pure install"
       npm cache clean
+      rm -rf $build_dir/node_modules
+      info "Installing pure node modules"
       touch $build_dir/.npmrc
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
     fi
