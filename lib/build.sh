@@ -202,7 +202,7 @@ function build_dependencies() {
       info "Installing any new modules"
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
     else
-      info "$cache_status"
+      info "Cache status is $cache_status"
       info "Installing node modules"
       npm cache clean
       touch $build_dir/.npmrc
