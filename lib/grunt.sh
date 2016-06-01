@@ -11,7 +11,7 @@ run_grunt() {
     else
       info "Could not find grunt executable bin file"
       info "Install dev dependencies for grunt-runnable purpose"
-      npm install --dev --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
+      npm install --only=dev --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
       info "Installing grunt-cli locally and re-running grunt task"
       npm install grunt-cli
       run_grunt
