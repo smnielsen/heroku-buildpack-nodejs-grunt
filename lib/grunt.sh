@@ -4,8 +4,10 @@ run_grunt() {
     echo "-----> Found Gruntfile, running grunt heroku task"
     if [ -f $build_dir/node_modules/grunt-cli/bin/grunt ]; then
       $build_dir/node_modules/grunt-cli/bin/grunt heroku
-    else
+    elif [ -f $build_dir/node_modules/grunt/bin/grunt ]; then
       $build_dir/node_modules/grunt/bin/grunt heroku
+    else
+      $build_dir/node_modules/.bin/grunt heroku
     fi
   else
     echo "-----> No gruntfile (grunt.js) found"
