@@ -13,7 +13,7 @@ run_grunt() {
       echo "Installing grunt-cli locally and re-running grunt task"
       npm install --dev
       npm install grunt-cli
-      run_grunt()
+      run_grunt
     fi
   else
     echo "-----> No gruntfile (grunt.js) found"
