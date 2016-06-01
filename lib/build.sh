@@ -208,7 +208,9 @@ function build_dependencies() {
       npm cache clean
       rm -rf $build_dir/node_modules
       info "Installing pure node modules"
-      touch $build_dir/.npmrc
+      if [ ! -f $build_dir/.npmrc ]; then
+          touch $build_dir/.npmrc
+      fi
       npm install --unsafe-perm --quiet --userconfig $build_dir/.npmrc 2>&1 | indent
     fi
   fi

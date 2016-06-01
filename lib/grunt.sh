@@ -6,8 +6,14 @@ run_grunt() {
       $build_dir/node_modules/grunt-cli/bin/grunt heroku
     elif [ -f $build_dir/node_modules/grunt/bin/grunt ]; then
       $build_dir/node_modules/grunt/bin/grunt heroku
-    else
+    elif [ -f $build_dir/node_modules/.bin/grunt ]; then
       $build_dir/node_modules/.bin/grunt heroku
+    else
+      echo "Could not find grunt executable bin file"
+      echo "Installing grunt-cli locally and re-running grunt task"
+      npm install --dev
+      npm install grunt-cli
+      run_grunt()
     fi
   else
     echo "-----> No gruntfile (grunt.js) found"
