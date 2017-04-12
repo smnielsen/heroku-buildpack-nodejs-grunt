@@ -181,6 +181,14 @@ install_npm() {
   fi
 }
 
+rebuild_node_deps() {
+  cd node_modules/contextify
+  ../node-gyp/bin/node-gyp.js rebuild
+  cd -
+  
+  npm rebuild node-sass
+}
+
 function build_dependencies() {
   if [ "$modules_source" == "" ]; then
     info "Skipping dependencies (no source for node_modules)"
