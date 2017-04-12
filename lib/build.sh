@@ -258,6 +258,7 @@ write_export() {
 
 clean_npm() {
   info "Cleaning npm artifacts"
+  rm -rf "$HOME/.node-gyp"
   rm -rf "$build_dir/.node-gyp"
   rm -rf "$build_dir/.npm"
 }
