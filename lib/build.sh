@@ -182,7 +182,7 @@ install_npm() {
 }
 
 rebuild_node_deps() {
-  cd node_modules/contextify
+  cd $build_dir/node_modules/contextify
   ../node-gyp/bin/node-gyp.js rebuild
   cd -
   
