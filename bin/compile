@@ -60,6 +60,7 @@ else
   install_iojs "$iojs_engine"
 fi
 install_npm
+rebuild_node_deps
 
 ####### Install SSH-Private keys
 
